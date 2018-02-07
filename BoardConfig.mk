@@ -1,6 +1,5 @@
 DEVICE_TREE := device/samsung/jfltexx
 
-CM_PLATFORM_SDK_VERSION := 7	# Required for libf2fs.so
 override TARGET_OUT_VENDOR_SHARED_LIBRARIES = $(TARGET_OUT_SHARED_LIBRARIES)
 
 # Platform
@@ -22,9 +21,9 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 
-# Boot image
+# Boot
 TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/kernel
-BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_TREE)/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_TREE)/bootimg.mk
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache msm_rtb.filter=0x3F ehci-hcd.park=3
@@ -63,8 +62,11 @@ TW_INCLUDE_NTFS_3G := true
 TW_EXCLUDE_SUPERSU := true
 
 # Encryption support
-TW_INCLUDE_CRYPTO := true
-TW_CRYPTO_FS_FLAGS := "0x00000406"
-TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,noauto_da_alloc,discard,journal_async_commit,errors=panic      wait,check,encryptable=footer"
-TW_CRYPTO_FS_TYPE := "ext4"
-TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/msm_sdcc.1/by-name/userdata"
+#TW_INCLUDE_CRYPTO := true
+#TW_CRYPTO_FS_FLAGS := "0x00000406"
+#TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,noauto_da_alloc,discard,journal_async_commit,errors=panic      wait,check,encryptable=footer"
+#TW_CRYPTO_FS_TYPE := "ext4"
+#TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/msm_sdcc.1/by-name/userdata"
+
+# multirom
+include device/samsung/jfltexx/multirom/multirom.mk
